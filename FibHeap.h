@@ -1,15 +1,16 @@
 #include <iostream>
-#include <FibNode.h>
-#include <Heap.h>
+#include "FibNode.h"
 
 #ifndef FIBHEAP_H
 #define FIBHEAP_H
 
-class FibHeap : public Heap
+template <class K, class D>
+class FibHeap
 {
 public:
 	int count;
-	FibNode* min;
+
+	FibNode<K,D>* min;
 
 	FibHeap()
 	{
@@ -17,18 +18,19 @@ public:
 		this->min = NULL;
 	}
 
-	virtual Heap* MakeHeap() override;
+	FibHeap<K,D>* MakeHeap();
 
-	virtual void Insert(T t) override;
+	void Insert(FibNode<K,D>* t);
 
-	virtual T Minimum() override;
+	FibNode<K,D>* Minimum();
 
-	virtual T ExtractMin() override;
+	FibNode<K,D>* ExtractMin();
 
-	virtual void DecreaseKey(T t, K k) override;
+	void DecreaseKey(FibNode<K,D>* t, K k);
 
-	virtual void Delete(T t) override;
+	void Delete(FibNode<K,D>* t);
 };
 
+template void FibHeap<int,string>::Insert(FibNode<int,string>*);
 
 #endif

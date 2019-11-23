@@ -1,32 +1,58 @@
-#include <FibHeap.h>
+#include "FibHeap.h"
+#include "FibNode.h"
+#include <string>
+using namespace std;
 
-Heap* FibHeap::MakeHeap()
+template <class K, class D>
+FibHeap<K,D>* FibHeap<K,D>::MakeHeap()
 {
 	// obsolete as constructor is there.
 	return this;
 }
 
-void FibHeap::Insert(T t)
+template <class K, class D>
+void FibHeap<K,D>::Insert(FibNode<K,D>* t)
 {
-	// 
+	// Inserting a node
+	cout << "Added " << t << endl;
+	if(this->min == NULL)
+	{
+		this->min = t;
+	}
+	else
+	{
+		t->right = this->min->right;
+		this->min->right->left = t;
+		t->left = this->min;
+		this->min->right = t;
+		if(t->key < this->min->key)
+			this->min = t;
+	}
+	this->count += 1;
+	return;
 }
 
-T FibHeap::Minimum()
+
+template <class K, class D>
+FibNode<K,D>* FibHeap<K,D>::Minimum()
 {
-	//
+	return NULL;
 }
 
-T FibHeap::ExtractMin()
+template <class K, class D>
+FibNode<K,D>* FibHeap<K,D>::ExtractMin()
 {
-	//
+	return NULL;
 }
 
-void FibHeap::DecreaseKey(T t, K k)
+template <class K, class D>
+void FibHeap<K,D>::DecreaseKey(FibNode<K,D>* t, K k)
 {
-	//
+	return;
 }
 
-void FibHeap::Delete(T t)
+template <class K, class D>
+void FibHeap<K,D>::Delete(FibNode<K,D>* t)
 {
-	//
+	return;
 }

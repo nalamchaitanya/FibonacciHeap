@@ -30,19 +30,22 @@ public:
 	}
 };
 
-bool operator==(const FibNode& a, const FibNode& b)
+template <class K, class D>
+bool operator==(const FibNode<K,D>& a, const FibNode<K,D>& b)
 {
 	return a->key == b->key;
 }
 
-bool operator<(const FibNode& a, const FibNode& b)
+template <class K, class D>
+bool operator<(const FibNode<K,D>& a, const FibNode<K,D>& b)
 {
 	return a->key < b->key;
 }
 
-ostream& operator<<(ostream& out, const FibNode& a)
+template <class K, class D>
+ostream& operator<<(ostream& out, const FibNode<K,D>& a)
 {
-	return out << a->key;
+	return out << a.key << " " << a.data;
 }
 
 #endif
