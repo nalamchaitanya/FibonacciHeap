@@ -1,22 +1,22 @@
 #include <iostream>
-
+#include "Node.h"
 #ifndef HEAP_H
 #define HEAP_H
 
-template <class T, class K>
+template <class K, class D>
 class Heap
 {
 	virtual Heap* MakeHeap() = 0;
 
-	virtual void Insert(T* t) = 0;
+	virtual void Insert(Node<K,D>* n) = 0;
 
-	virtual T* Minimum() = 0;
+	virtual Node<K,D>* Minimum() = 0;
 
-	virtual T* ExtractMin() = 0;
+	virtual Node<K,D>* ExtractMin() = 0;
 
-	virtual void DecreaseKey(T* t, K k) = 0;
+	virtual void DecreaseKey(Node<K,D>* n, K k) = 0;
 
-	virtual void Delete(T* t) = 0;
+	virtual void Delete(Node<K,D>* n) = 0;
 };
 
 #endif

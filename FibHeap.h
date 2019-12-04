@@ -1,11 +1,12 @@
 #include <iostream>
+#include "Heap.h"
 #include "FibNode.h"
 
 #ifndef FIBHEAP_H
 #define FIBHEAP_H
 
 template <class K, class D>
-class FibHeap
+class FibHeap : public Heap<K,D>
 {
 public:
 	int count;
@@ -20,17 +21,17 @@ public:
 
 	FibHeap<K,D>* MakeHeap();
 
-	void Insert(FibNode<K,D>* t);
+	void Insert(Node<K,D>* t);
 
-	FibNode<K,D>* Minimum();
+	Node<K,D>* Minimum();
 
-	FibNode<K,D>* ExtractMin();
+	Node<K,D>* ExtractMin();
 
-	void DecreaseKey(FibNode<K,D>* t, K k);
+	void DecreaseKey(Node<K,D>* t, K k);
 
-	void Delete(FibNode<K,D>* t);
+	void Delete(Node<K,D>* t);
 };
 
-template void FibHeap<int,string>::Insert(FibNode<int,string>*);
+template void FibHeap<int,string>::Insert(Node<int,string>*);
 
 #endif

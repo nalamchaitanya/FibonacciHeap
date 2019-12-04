@@ -4,14 +4,14 @@
 using namespace std;
 
 template <class K, class D>
-FibHeap<K,D>* FibHeap<K,D>::MakeHeap()
+Heap<K,D>* FibHeap<K,D>::MakeHeap()
 {
 	// obsolete as constructor is there.
 	return this;
 }
 
 template <class K, class D>
-void FibHeap<K,D>::Insert(FibNode<K,D>* t)
+void FibHeap<K,D>::Insert(Node<K,D>* t)
 {
 	// Inserting a node
 	cout << "Added " << t << endl;
@@ -34,25 +34,25 @@ void FibHeap<K,D>::Insert(FibNode<K,D>* t)
 
 
 template <class K, class D>
-FibNode<K,D>* FibHeap<K,D>::Minimum()
+Node<K,D>* FibHeap<K,D>::Minimum()
 {
 	return NULL;
 }
 
 template <class K, class D>
-FibNode<K,D>* FibHeap<K,D>::ExtractMin()
+Node<K,D>* FibHeap<K,D>::ExtractMin()
 {
 	return NULL;
 }
 
 template <class K, class D>
-void FibHeap<K,D>::DecreaseKey(FibNode<K,D>* t, K k)
+void FibHeap<K,D>::DecreaseKey(Node<K,D>* t, K k)
 {
 	return;
 }
 
 template <class K, class D>
-void FibHeap<K,D>::Delete(FibNode<K,D>* t)
+void FibHeap<K,D>::Delete(Node<K,D>* t)
 {
 	return;
 }

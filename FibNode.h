@@ -1,15 +1,14 @@
 #include <iostream>
+#include "Node.h"
 using namespace std;
 
 #ifndef FIBNODE_H
 #define FIBNODE_H
 
 template <class K, class D>
-class FibNode
+class FibNode : public Node<K,D>
 {
 public:
-	K key;
-	D data;
 	FibNode* parent;
 	FibNode* left;
 	FibNode* right;
@@ -17,10 +16,8 @@ public:
 	int degree;
 	bool mark;
 
-	FibNode(K k, D d)
+	FibNode(K k, D d) : Node<K,D>(K k, D d)
 	{
-		this->key = k;
-		this->data = d;
 		this->parent = NULL;
 		this->left = NULL;
 		this->right = NULL;
