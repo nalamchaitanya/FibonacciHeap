@@ -12,5 +12,11 @@ int main()
 	FibNode<int,string>* node = new FibNode<int,string>(key, name);
 	cout << *node << endl;
 	fib->Insert(node);
+	// FibHeap<int,int>* fib = new FibHeap<int,int>();
+	// string name("abc");
+	// int key = 4;
+	// FibNode<int,int>* node = new FibNode<int,int>(key, 5);
+	// cout << *node << endl;
+	// fib->Insert(node);
 	return 0;
 }
