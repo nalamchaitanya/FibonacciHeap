@@ -32,13 +32,12 @@ public:
 		if(this->min == NULL)
 		{
 			this->min = t;
+			this->min->right = this->min;
+			this->min->left = this->min;
 		}
 		else
 		{
-			t->right = this->min->right;
-			this->min->right->left = t;
-			t->left = this->min;
-			this->min->right = t;
+			addNodeToList(this->min, t);
 			if(t->key < this->min->key)
 				this->min = t;
 		}
@@ -160,6 +159,8 @@ private:
 				if(this->min == NULL)
 				{
 					this->min = tempNode;
+					this->min->right = this->min;
+					this->min->left = this->min;
 				}
 				else
 				{
