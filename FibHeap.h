@@ -63,7 +63,52 @@ public:
 		}
 	}
 
-	void DecreaseKey(FibNode<K,D>* t, K k);
+	void Cut(FibNode<K,D>* t, FibNode<K,D>* temp) 
+	{  
+	    if (t == temp->child) 
+	        temp->child = t->right; 
+	    temp->degree = temp->degree - 1; 
+	     
+	    //Add x to the root list of H
+	    //To Do
+	    
+	    t->parent = NULL; 
+	    t->mark = false; 
+	} 
+
+	void Cascase_cut(FibNode<K,D>* t) 
+	{ 
+    	FibNode<K,D>* z = t->parent; 
+    	if (z != NULL) { 
+    	    if (t->mark == false) { 
+    	        t->mark = true; 
+    	    } 
+    	    else { 
+    	        Cut(t, z); 
+    	        Cascase_cut(z); 
+    	    } 
+    	} 
+	} 
+	
+	void DecreaseKey(FibNode<K,D>* t, K k) 
+	{ 
+    	if (this->min == NULL) 
+    	    cout << "The Heap is Empty" << endl; 
+  
+    	if (t == NULL) 
+    	    cout << "Node not t in the Heap" << endl; 
+  
+    	t->key = k; 
+  
+    	FibNode<K,D>* temp = t->parent; 
+    	if (temp != NULL && t->key < temp->key)
+    	{ 
+    	    Cut(t, temp); 
+    	    Cascase_cut(temp); 
+    	} 
+    	if (t->key < this->min->key) 
+        	this->min = t; 
+	}
 
 	void Delete(FibNode<K,D>* t);
 
