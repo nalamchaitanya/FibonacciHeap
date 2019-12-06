@@ -12,7 +12,7 @@ int main()
 	while(true)
 	{
 		int t;
-		cout << "Type command: "
+		cout << "Type command: ";
 		cin >> t;
 		switch(t)
 		{
@@ -33,7 +33,8 @@ int main()
 				cout << *(fib->ExtractMin()) << endl;
 				break;
 			case 4:
-				cout << *fib << endl;
+				// cout << *fib << endl;
+				break;
 		}
 	}
 	return 0;
