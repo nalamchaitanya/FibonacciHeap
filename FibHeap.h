@@ -178,6 +178,14 @@ private:
 	{
 		removeNodeFromList(y);
 		y->parent = x;
+		if(x->children == NULL)
+		{
+			x->children = y;
+		}
+		else
+		{
+			addNodeToList(x->children, y);
+		}
 		x->degree++;
 		y->mark = false;
 	}

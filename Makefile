@@ -3,7 +3,7 @@
 CFLAG = -c
 GCC = g++
 
-all: FibHeap
+all: clean FibHeap
 
 FibHeap: Main.o
 	$(GCC) $^ -o $@
