@@ -45,7 +45,9 @@ bool operator<(const FibNode<K,D>& a, const FibNode<K,D>& b)
 template <class K, class D>
 ostream& operator<<(ostream& out, const FibNode<K,D>& a)
 {
-	return out << a.key << " " << a.data;
+	return out << "[key:" << a.key << "|data:" << a.data << "|parent:"
+				<< a.parent << "|left:" << a.left << "|right:" << a.right << "|children:"
+				<< a.children << "|degree:" << a.degree << "|mark:" << a.mark << "]";
 }
 
 #endif
