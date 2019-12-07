@@ -1,15 +1,15 @@
 # Makefile
 
-CFLAG = -c
+CFLAGS = -c -g
 GCC = g++
 
-all: clean FibHeap
+all: FibHeap
 
 FibHeap: Main.o
 	$(GCC) $^ -o $@
 
 Main.o: Main.cpp
-	$(GCC) -c $^ -o $@
+	$(GCC) $(CFLAGS) $^ -o $@
 
 clean:
 	rm -rf *.o

@@ -27,13 +27,19 @@ int main()
 				fib->Insert(new FibNode<int,string>(key, name));
 				break;
 			case 2:
-				cout << *(fib->Minimum()) << endl;
+				if(fib->count)
+					cout << *(fib->Minimum()) << endl;
+				else
+					cout << "Invalid" << endl;
 				break;
 			case 3:
-				cout << *(fib->ExtractMin()) << endl;
+				if(fib->count)
+					cout << *(fib->ExtractMin()) << endl;
+				else
+					cout << "Invalid" << endl;
 				break;
 			case 4:
-				// cout << *fib << endl;
+				cout << *fib << endl;
 				break;
 		}
 	}

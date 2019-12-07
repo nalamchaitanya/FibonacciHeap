@@ -185,6 +185,8 @@ private:
 		if(x->children == NULL)
 		{
 			x->children = y;
+			y->left = y;
+			y->right = y;
 		}
 		else
 		{
