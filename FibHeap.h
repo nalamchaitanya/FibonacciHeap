@@ -211,6 +211,17 @@ private:
 		leftNode->right = rightNode;
 		rightNode->left = leftNode;
 	}
+
+	string printHeap()
+	{
+		return this->min->printList();
+	}
 };
+
+template <class K, class D>
+ostream& operator<<(ostream& out, const FibHeap<K,D>& a)
+{
+	return out << "[count: " << a.count << "|nodes:\n" << a.min->printList("\t") << "]\n";
+}
 
 #endif

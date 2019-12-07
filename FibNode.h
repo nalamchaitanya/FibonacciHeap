@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 #ifndef FIBNODE_H
@@ -27,6 +28,27 @@ public:
 		this->children = NULL;
 		this->degree = 0;
 		this->mark = false;
+	}
+
+	string printList(string prefix)
+	{
+		auto node = this;
+		stringstream ss;
+		do
+		{
+			if(node->children)
+				ss << prefix << "[key:" << node->key << "|data:" << node->data << "|parent:"
+				<< node->parent << "|left:" << node->left << "|right:" << node->right
+				<< "|degree:" << node->degree << "|mark:" << node->mark << "|children: \n"
+				<< node->children->printList(prefix+"\t") << "]\n";
+			else
+				ss << prefix << "[key:" << node->key << "|data:" << node->data << "|parent:"
+				<< node->parent << "|left:" << node->left << "|right:" << node->right
+				<< "|degree:" << node->degree << "|mark:" << node->mark << "|children:"
+				<< node->children << "]\n";
+			node = node->right;
+		}while(node != this);
+		return ss.str();
 	}
 };
 
