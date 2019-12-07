@@ -22,9 +22,9 @@ int main()
 			case 1:
 				cout << "Type Key: ";
 				cin >> key;
-				cout << "Type Data: ";
-				cin >> name;
-				fib->Insert(new FibNode<int,string>(key, name));
+				// cout << "Type Data: ";
+				// cin >> name;
+				fib->Insert(new FibNode<int,string>(key, "abc"));
 				break;
 			case 2:
 				if(fib->count)
@@ -40,6 +40,11 @@ int main()
 				break;
 			case 4:
 				cout << *fib << endl;
+				break;
+			case 0:
+				string str;
+				getline(cin, str);
+				// cout << str << endl;
 				break;
 		}
 	}
