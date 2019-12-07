@@ -130,11 +130,13 @@ private:
 	{
 		int size = 1.5*log2(this->count);
 		vector<FibNode<K,D>*> consol(size, NULL);
-		auto node = this->min;
+		auto nextNode = this->min;
+		auto finalNode = nextNode->left;
 		do
 		{
-			auto curr = node;
-			node = node->right;
+			auto curr = nextNode;
+			auto processingNode = nextNode;
+			nextNode = curr->right;
 			auto degree = curr->degree;
 			while(consol[degree] != NULL)
 			{
@@ -150,7 +152,9 @@ private:
 				degree++;
 			}
 			consol[degree] = curr;
-		}while(node != this->min);
+			if(processingNode == finalNode)
+				break;
+		}while(true);
 		this->min = NULL;
 		for(auto tempNode : consol)
 		{
