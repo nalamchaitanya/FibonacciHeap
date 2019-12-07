@@ -2,11 +2,14 @@
 #include <string>
 #include "FibHeap.h"
 #include "FibNode.h"
+#include "BinNode.h"
+#include "BinHeap.h"
 using namespace std;
 
 int main()
 {
-	FibHeap<int,string>* fib = new FibHeap<int,string>();
+	//FibHeap<int,string>* fib = new FibHeap<int,string>();
+	BinHeap<int,string>* fib = new BinHeap<int,string>();
 	string name;
 	int key = 0;
 	while(true)
@@ -24,7 +27,7 @@ int main()
 				cin >> key;
 				cout << "Type Data: ";
 				cin >> name;
-				fib->Insert(new FibNode<int,string>(key, name));
+				fib->Insert(new BinNode<int,string>(key, name));
 				break;
 			case 2:
 				if(fib->count)
