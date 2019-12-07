@@ -81,9 +81,7 @@ public:
 	    if (t == temp->child) 
 	        temp->child = t->right; 
 	    temp->degree = temp->degree - 1; 
-	     
-	    //Add x to the root list of H
-	    //To Do
+	    t = addNodeToList(this->min, t);
 	    
 	    t->parent = NULL; 
 	    t->mark = false; 
