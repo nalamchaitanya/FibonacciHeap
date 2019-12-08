@@ -2,13 +2,17 @@
 #include <string>
 #include "FibHeap.h"
 #include "FibNode.h"
+#include "BinNode.h"
+#include "BinHeap.h"
 using namespace std;
 
 int main()
 {
-	FibHeap<int,string>* fib = new FibHeap<int,string>();
+	BinHeap<int,string>* fib = new BinHeap<int,string>();
 	string name;
 	int key = 0;
+	string label;
+	int newKey;
 	while(true)
 	{
 		int t;
@@ -24,7 +28,7 @@ int main()
 				cin >> key;
 				cout << "Type Data: ";
 				cin >> name;
-				fib->Insert(new FibNode<int,string>(key, name));
+				fib->Insert(new BinNode<int,string>(key, name));
 				break;
 			case 2:
 				if(fib->count)
@@ -39,8 +43,18 @@ int main()
 					cout << "Invalid" << endl;
 				break;
 			case 4:
-				cout << *fib << endl;
+				cout << "Type label: ";
+				cin >> label;
+				cout << "Type new key: ";
+				cin >> newKey;
+				fib->DecreaseKey(label, newKey);
 				break;
+			case 5:
+				unordered_map<string, int> m = fib->mapping;
+				for (auto it = m.cbegin(); it != m.cend(); ++it) {
+			        std::cout << "{" << (*it).first << ": " << (*it).second << "}\n";
+			    }
+			    break;
 		}
 	}
 	return 0;
