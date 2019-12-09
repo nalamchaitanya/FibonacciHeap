@@ -6,9 +6,8 @@ using namespace std;
 
 int main()
 {
-	FibHeap<int,string>* fib = new FibHeap<int,string>();
-	string name;
-	int key = 0;
+	FibHeap<int,int>* fib = new FibHeap<int,int>();
+	int labelCount = 0;
 	while(true)
 	{
 		int t;
@@ -21,10 +20,9 @@ int main()
 				return 0;
 			case 1:
 				cout << "Type Key: ";
+				int key;
 				cin >> key;
-				// cout << "Type Data: ";
-				// cin >> name;
-				fib->Insert(new FibNode<int,string>(key, "abc"));
+				fib->Insert(new FibNode<int,int>(key, labelCount++));
 				break;
 			case 2:
 				if(fib->count)
@@ -45,6 +43,12 @@ int main()
 				string str;
 				getline(cin, str);
 				// cout << str << endl;
+			case 5:
+				int label;
+				cin >> label;
+				int decreasedKey;
+				cin >> decreasedKey;
+				fib->DecreaseKey(label, decreasedKey);
 				break;
 		}
 	}
