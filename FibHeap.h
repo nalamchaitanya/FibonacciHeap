@@ -76,48 +76,46 @@ public:
 		return result;
 	}
 
-	void Cut(FibNode<K,D>* t, FibNode<K,D>* temp) 
+	void Cut(FibNode<K,D>* x, FibNode<K,D>* y)
 	{  
-	    if (t == temp->child) 
-	        temp->child = t->right; 
-	    temp->degree = temp->degree - 1; 
-	    t = addNodeToList(this->min, t);
-	    
-	    t->parent = NULL; 
-	    t->mark = false; 
+	    removeNodeFromList(x);
+	    y->degree--;
+	    addNodeToList(this->min, x);
+	    x->parent = NULL;
+	    x->mark = false;
 	} 
 
-	void Cascase_cut(FibNode<K,D>* t) 
-	{ 
-    	FibNode<K,D>* z = t->parent; 
-    	if (z != NULL) { 
-    	    if (t->mark == false) { 
-    	        t->mark = true; 
-    	    } 
-    	    else { 
-    	        Cut(t, z); 
-    	        Cascase_cut(z); 
-    	    } 
-    	} 
-	} 
+	void CascadeCut(FibNode<K,D>* t)
+	{
+		auto z = t->parent;
+		if(z != NULL)
+		{
+			if (t->mark == false)
+			{
+				t->mark = true;
+			}
+			else
+			{
+				Cut(t, z);
+				CascadeCut(z);
+			}
+		}
+	}
 	
 	void DecreaseKey(FibNode<K,D>* t, K k) 
-	{ 
-    	if (this->min == NULL) 
-    	    cout << "The Heap is Empty" << endl; 
-  
-    	if (t == NULL) 
-    	    cout << "Node not t in the Heap" << endl; 
-  
-    	t->key = k; 
-  
-    	FibNode<K,D>* temp = t->parent; 
-    	if (temp != NULL && t->key < temp->key)
+	{
+		if(k > t->key)
+		{
+			assert(false);
+		}
+		t->key = k;
+		FibNode<K,D>* y = t->parent;
+		if (y != NULL && t->key < y->key)
     	{ 
-    	    Cut(t, temp); 
-    	    Cascase_cut(temp); 
-    	} 
-    	if (t->key < this->min->key) 
+			Cut(t, y);
+			CascadeCut(y);
+		}
+		if(t->key < this->min->key)
         	this->min = t; 
 	}
 
