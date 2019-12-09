@@ -1,6 +1,8 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <assert.h>
+#include <unordered_map>
 #include "FibNode.h"
 
 #ifndef FIBHEAP_H
@@ -12,6 +14,7 @@ class FibHeap
 public:
 	int count;
 	FibNode<K,D>* min;
+	unordered_map<D,FibNode<K,D>*> findNode;
 
 	FibHeap()
 	{
@@ -28,7 +31,8 @@ public:
 	void Insert(FibNode<K,D>* t)
 	{
 		// Inserting a node
-		cout << "Added " << t << endl;
+		// cout << "Added " << t << endl;
+		this->findNode[t->data] = t;
 		if(this->min == NULL)
 		{
 			this->min = t;
@@ -73,6 +77,7 @@ public:
 			}
 			this->count--;
 		}
+		this->findNode.erase(result->data);
 		return result;
 	}
 
@@ -102,21 +107,25 @@ public:
 		}
 	}
 	
-	void DecreaseKey(FibNode<K,D>* t, K k) 
+	void DecreaseKey(D d, K k)
 	{
-		if(k > t->key)
+		if(this->findNode.find(d) != this->findNode.end())
 		{
-			assert(false);
+			auto t = this->findNode[d];
+			if(k > t->key)
+			{
+				assert(false);
+			}
+			t->key = k;
+			FibNode<K,D>* y = t->parent;
+			if(y != NULL && t->key < y->key)
+			{
+				Cut(t, y);
+				CascadeCut(y);
+			}
+			if(t->key < this->min->key)
+				this->min = t;
 		}
-		t->key = k;
-		FibNode<K,D>* y = t->parent;
-		if (y != NULL && t->key < y->key)
-    	{ 
-			Cut(t, y);
-			CascadeCut(y);
-		}
-		if(t->key < this->min->key)
-        	this->min = t; 
 	}
 
 	void Delete(FibNode<K,D>* t);
