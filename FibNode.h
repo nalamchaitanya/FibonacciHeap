@@ -39,8 +39,8 @@ public:
 			if(node->children)
 				ss << prefix << "[key:" << node->key << "|data:" << node->data << "|parent:"
 				<< node->parent << "|left:" << node->left << "|right:" << node->right
-				<< "|degree:" << node->degree << "|mark:" << node->mark << "|children: \n"
-				<< node->children->printList(prefix+"\t") << "]\n";
+				<< "|degree:" << node->degree << "|mark:" << node->mark << "|children:\n"
+				<< node->children->printList(prefix+"\t") << prefix+"]\n";
 			else
 				ss << prefix << "[key:" << node->key << "|data:" << node->data << "|parent:"
 				<< node->parent << "|left:" << node->left << "|right:" << node->right

@@ -131,6 +131,11 @@ public:
 		}
 	}
 
+	bool IsEmpty()
+	{
+		return this->min == NULL;
+	}
+
 	void Delete(FibNode<K,D>* t);
 
 private:
