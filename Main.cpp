@@ -6,6 +6,7 @@
 #include "BinNode.h"
 #include "BinHeap.h"
 #include "Djisktra.h"
+#include "Prims.h"
 using namespace std;
 
 void testBinHeap() {
@@ -175,10 +176,20 @@ void testDjisktra (vector<vector<std::pair<int,int> > > adj, int sourceNode){
 	}
 }
 
+void testPrims (vector<vector<std::pair<int,int> > > adj, int sourceNode){
+	Prims* prims = new Prims();
+	unordered_map<int, int> nodeToParentMapping = prims->runPrims(adj, sourceNode);
+
+	for (auto i : nodeToParentMapping) {
+		cout << i.first << ", " << i.second << endl;
+	}
+}
+
 int main()
 {
-	testBinHeap();
-	//vector<vector<std::pair<int,int> > > adj = getAdj();
+	//testBinHeap();
+	vector<vector<std::pair<int,int> > > adj = getAdj();
 	//testDjisktra(adj, 0);
+	testPrims(adj, 0);
 	return 0;
 }
