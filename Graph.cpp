@@ -39,7 +39,7 @@ void printResult(pair<vector<int>, unordered_map<int, int> > output)
 {
 	vector<int> distances = output.first;
 	unordered_map<int, int> nodeToParentMapping = output.second;
-	for (int i = 0; i < adj.size(); i++)
+	for (int i = 0; i < distances.size(); i++)
 	{
 		cout << i << ", " << distances[i] << endl;
 	}
