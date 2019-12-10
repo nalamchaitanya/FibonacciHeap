@@ -136,6 +136,11 @@ public:
 		return this->min == NULL;
 	}
 
+	bool IsInHeap(D label)
+	{
+		return findNode.find(label) != findNode.end();
+	}
+
 	void Delete(FibNode<K,D>* t);
 
 private:
