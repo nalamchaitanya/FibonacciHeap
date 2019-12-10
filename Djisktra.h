@@ -32,7 +32,7 @@ public:
 		BinNode<int, int>* node = new BinNode<int, int>(0, sourceNode);
 		//FibNode<int, int>* node = new FibNode<int, int>(0, sourceNode);
 		BinHeap<int, int>* heap = new BinHeap<int, int>();
-		//FibHeap<int, int>* node = new FibHeap<int, int>(0, sourceNode);
+		//FibHeap<int, int>* heap = new FibHeap<int, int>();
 		heap->Insert(node);
 
 		while (!heap->IsEmpty()) {
