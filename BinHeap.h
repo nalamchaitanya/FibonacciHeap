@@ -31,10 +31,15 @@ public:
 		return this;
 	}
 
+	bool IsEmpty() {
+		if (this->count == 0) {
+			return true;
+		}
+		return false;
+	}
+
 	void Insert(BinNode<K,D>* t)
 	{
-		// Inserting a node
-		cout << "Added " << t << endl;
 		this->count += 1;
 		this->heap.push_back(t);
 		this->mapping[t->data] = count - 1;
