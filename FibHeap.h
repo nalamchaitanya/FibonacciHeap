@@ -227,16 +227,9 @@ private:
 		}
 		auto leftNode = node->left;
 		auto rightNode = node->right;
-		if(leftNode == node)
+		if(leftNode == node && node->parent != NULL)
 		{
-			if(node->parent != NULL)
-			{
-				node->parent->children = NULL;
-			}
-			else
-			{
-				this->min = NULL;
-			}
+			node->parent->children = NULL;
 		}
 		else
 		{

@@ -55,7 +55,6 @@ int main()
 				getline(cin, str);
 				cout << str << endl;
 				break;
-
 		}
 	}
 	return 0;
