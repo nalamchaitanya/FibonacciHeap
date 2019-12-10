@@ -32,7 +32,7 @@ public:
 		BinNode<int, int>* node = new BinNode<int, int>(0, sourceNode);
 		//FibNode<int, int>* node = new FibNode<int, int>(0, sourceNode);
 		BinHeap<int, int>* heap = new BinHeap<int, int>();
-		//FibHeap<int, int>* node = new FibHeap<int, int>(0, sourceNode);
+		//FibHeap<int, int>* heap = new FibHeap<int, int>();
 		heap->Insert(node);
 
 		while (!heap->IsEmpty()) {
@@ -44,6 +44,9 @@ public:
 				if (distances[neighbors[i].first] == INT_MAX) {
 					heap->Insert(new BinNode<int, int>(INT_MAX, neighbors[i].first));
 					//heap->Insert(new FibNode<int, int>(INT_MAX, neighbors[i].first));
+				}
+				if (!heap->IsInHeap(neighbors[i].first)) {
+					continue;
 				}
 				if (neighbors[i].second < distances[neighbors[i].first]) {
 					distances[neighbors[i].first] = neighbors[i].second;

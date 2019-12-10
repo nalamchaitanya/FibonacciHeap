@@ -73,6 +73,14 @@ public:
 		this->heap.pop_back();
 		return min;
 	}
+
+	bool IsInHeap(D label) {
+		if (this->mapping.find(label) == this->mapping.end()) 
+		{
+			return false;
+		}
+		return true;
+	}
 	
 	void DecreaseKey(D label, K k) 
 	{ 
