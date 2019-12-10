@@ -4,6 +4,7 @@
 #include "FibNode.h"
 #include "FibHeap.h"
 #include <math.h>
+#include <climits>
 #include <vector>
 #include <utility> 
 using namespace std;
@@ -29,10 +30,10 @@ public:
 
 		distances[sourceNode] = 0;
 
-		BinNode<int, int>* node = new BinNode<int, int>(0, sourceNode);
-		//FibNode<int, int>* node = new FibNode<int, int>(0, sourceNode);
-		BinHeap<int, int>* heap = new BinHeap<int, int>();
-		//FibHeap<int, int>* node = new FibHeap<int, int>(0, sourceNode);
+		// BinNode<int, int>* node = new BinNode<int, int>(0, sourceNode);
+		FibNode<int, int>* node = new FibNode<int, int>(0, sourceNode);
+		// BinHeap<int, int>* heap = new BinHeap<int, int>();
+		FibHeap<int, int>* heap = new FibHeap<int, int>();
 		heap->Insert(node);
 
 		while (!heap->IsEmpty()) {
@@ -42,8 +43,8 @@ public:
 			vector<std::pair<int, int> > neighbors = adj[currentNodeIndex];
 			for (int i = 0; i < neighbors.size(); i++) {
 				if (distances[neighbors[i].first] == INT_MAX) {
-					heap->Insert(new BinNode<int, int>(INT_MAX, neighbors[i].first));
-					//heap->Insert(new FibNode<int, int>(INT_MAX, neighbors[i].first));
+					// heap->Insert(new BinNode<int, int>(INT_MAX, neighbors[i].first));
+					heap->Insert(new FibNode<int, int>(INT_MAX, neighbors[i].first));
 				}
 				if (distances[currentNodeIndex] + neighbors[i].second < distances[neighbors[i].first]) {
 					distances[neighbors[i].first] = distances[currentNodeIndex] + neighbors[i].second;
