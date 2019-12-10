@@ -62,8 +62,11 @@ public:
 			auto childNode = result->children;
 			while(childNode != NULL)
 			{
+				// cout << childNode->key << endl;
+				removeNodeFromList(childNode);
 				childNode->parent = NULL;
-				childNode = addNodeToList(this->min, childNode);
+				addNodeToList(this->min, childNode);
+				childNode = result->children;
 			}
 			if(result == result->right)
 			{
@@ -201,22 +204,40 @@ private:
 		y->mark = false;
 	}
 
-	FibNode<K, D>* addNodeToList(FibNode<K, D>* head, FibNode<K, D>* node)
+	void addNodeToList(FibNode<K, D>* head, FibNode<K, D>* node)
 	{
-		auto result = node->right;
+		// auto result = head->right;
 		node->right = head->right;
 		head->right->left = node;
 		node->left = head;
 		head->right = node;
-		return result;
+		// return result;
 	}
 
 	void removeNodeFromList(FibNode<K, D>* node)
 	{
+		if(node->parent != NULL && node->parent->children == node)
+		{
+			node->parent->children = node->right;
+		}
 		auto leftNode = node->left;
 		auto rightNode = node->right;
-		leftNode->right = rightNode;
-		rightNode->left = leftNode;
+		if(leftNode == node)
+		{
+			if(node->parent != NULL)
+			{
+				node->parent->children = NULL;
+			}
+			else
+			{
+				this->min = NULL;
+			}
+		}
+		else
+		{
+			leftNode->right = rightNode;
+			rightNode->left = leftNode;
+		}
 	}
 
 	string printHeap()
