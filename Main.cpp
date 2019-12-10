@@ -148,14 +148,14 @@ vector<vector<std::pair<int,int> > > getAdj() {
 	oneList.push_back(node);
 	adj.push_back(oneList);
 
-	for (int i = 0; i < adj.size(); i++) {
-		cout << "--------- " << i << endl;
-		vector<pair<int,int> > temp = adj[i];
-			for (int j = 0; j < temp.size(); j++) {
-				cout << temp[j].first << ", " << temp[j].second << endl;
-			}
-	}
-	cout << "--------- " << endl;
+	// for (int i = 0; i < adj.size(); i++) {
+	// 	cout << "--------- " << i << endl;
+	// 	vector<pair<int,int> > temp = adj[i];
+	// 		for (int j = 0; j < temp.size(); j++) {
+	// 			cout << temp[j].first << ", " << temp[j].second << endl;
+	// 		}
+	// }
+	// cout << "--------- " << endl;
 	return adj;
 }
 
@@ -189,7 +189,7 @@ int main()
 {
 	//testBinHeap();
 	vector<vector<std::pair<int,int> > > adj = getAdj();
-	//testDjisktra(adj, 0);
-	testPrims(adj, 0);
+	testDjisktra(adj, 0);
+	// testPrims(adj, 0);
 	return 0;
 }
