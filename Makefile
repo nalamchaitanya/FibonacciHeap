@@ -25,6 +25,7 @@ Main.o: Main.cpp
 
 clean:
 	rm -rf *.o
+	rm *.res
 # 	rm FibHeap
 	rm Dijkstras
 	rm Prims

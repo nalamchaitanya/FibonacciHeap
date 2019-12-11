@@ -8,6 +8,7 @@
 #include "Djisktra.h"
 #include "Prims.h"
 #include "Graph.cpp"
+#include <chrono>
 using namespace std;
 
 int main(int argc, char** argv)
@@ -21,10 +22,14 @@ int main(int argc, char** argv)
 	int heapType = stoi(argv[2]);
 	Prims* prims = new Prims();
 	unordered_map<int, int> output;
+	auto start = chrono::high_resolution_clock::now();
 	if(heapType == 0)
 		output = prims->runPrimsWithBin(adj, 0);
 	else
 		output = prims->runPrimsWithFib(adj, 0);
-	printResult({{},output});
+	auto end = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::microseconds>(end-start);
+	cout << duration.count() << endl;
+	// printResult({{},output});
 	return 0;
 }
