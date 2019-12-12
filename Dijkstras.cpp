@@ -18,7 +18,8 @@ int main(int argc, char** argv)
 		cout << "Give two arguments" << endl;
 		return 0;
 	}
-	vector<vector<std::pair<int,int> > > adj = getGraph(argv[1]);
+	int nodes,edges;
+	vector<vector<std::pair<int,int> > > adj = getGraph(argv[1], &nodes, &edges);
 	int heapType = stoi(argv[2]);
 	Djisktra* djisktra = new Djisktra();
 	pair<vector<int>, unordered_map<int, int> > output;
@@ -29,7 +30,8 @@ int main(int argc, char** argv)
 		output = djisktra->runDjisktraWithFib(adj, 0);
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-	cout << duration.count() << endl;
+	// cout << duration.count() << endl;
 	// printResult(output);
+	cout << nodes << " " << edges << " " << duration.count() << endl;
 	return 0;
 }
